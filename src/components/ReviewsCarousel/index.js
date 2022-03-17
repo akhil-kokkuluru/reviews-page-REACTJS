@@ -29,7 +29,12 @@ class ReviewsCarousel extends Component {
         <h1 className="heading">Reviews</h1>
         <img className="imgCss" src={imgUrl} alt={username} />
         <div className="arrowsContainer">
-          <button type="button" className="buttons" onClick={this.leftClick}>
+          <button
+            type="button"
+            className="buttons"
+            onClick={this.leftClick}
+            testid="leftArrow"
+          >
             <img
               className="arrowImg"
               src="https://assets.ccbp.in/frontend/react-js/left-arrow-img.png"
@@ -37,7 +42,12 @@ class ReviewsCarousel extends Component {
             />
           </button>
           <p className="paraName">{username}</p>
-          <button type="button" className="buttons" onClick={this.rightClick}>
+          <button
+            type="button"
+            className="buttons"
+            onClick={this.rightClick}
+            testid="rightArrow"
+          >
             <img
               className="arrowImg"
               src="https://assets.ccbp.in/frontend/react-js/right-arrow-img.png"
