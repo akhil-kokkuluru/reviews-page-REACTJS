@@ -3,30 +3,41 @@ import './index.css'
 import {Component} from 'react'
 
 class ReviewsCarousel extends Component {
+  state = {idNum: 0}
 
-//   state = {idNum: reviewsList[0]}
+  leftClick = () => {
+    const {idNum} = this.state
+    if (idNum > 0) {
+      this.setState(prevValuve => ({idNum: prevValuve.idNum - 1}))
+    }
+  }
 
-  const reviewsList = props
-
+  rightClick = () => {
+    const {idNum} = this.state
+    if (idNum < 3) {
+      this.setState(prevValuve => ({idNum: prevValuve.idNum + 1}))
+    }
+  }
 
   render() {
+    const {idNum} = this.state
+    const {reviewsList} = this.props
+    const reviewmem = reviewsList[idNum]
+    const {imgUrl, username, companyName, description} = reviewmem
     return (
       <div className="totalBG">
         <h1 className="heading">Reviews</h1>
-        <img
-          className="imgCss"
-          src="https://assets.ccbp.in/frontend/react-js/wade-warren-img.png"
-        />
+        <img className="imgCss" src={imgUrl} alt={username} />
         <div className="arrowsContainer">
-          <button type="button" className="buttons">
+          <button type="button" className="buttons" onClick={this.leftClick}>
             <img
               className="arrowImg"
               src="https://assets.ccbp.in/frontend/react-js/left-arrow-img.png"
               alt="left arrow"
             />
           </button>
-          <p className="paraName">Wade Warren</p>
-          <button type="button" className="buttons">
+          <p className="paraName">{username}</p>
+          <button type="button" className="buttons" onClick={this.rightClick}>
             <img
               className="arrowImg"
               src="https://assets.ccbp.in/frontend/react-js/right-arrow-img.png"
@@ -34,11 +45,8 @@ class ReviewsCarousel extends Component {
             />
           </button>
         </div>
-        <p>Rang</p>
-        <p className="belowPara">
-          The most important thing | learnt is that nothing is a failure, but
-          what we learn from that is a rich and rewarding experience.
-        </p>
+        <p>{companyName}</p>
+        <p className="belowPara">{description}</p>
       </div>
     )
   }
